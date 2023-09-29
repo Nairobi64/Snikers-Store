@@ -1,0 +1,77 @@
+body{
+    max-width: 100%;
+    margin: 0;
+    padding:0;
+}
+
+header{
+    background: #6b63e4;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #fff;
+}
+header img {
+    height: 50px;
+    margin-left: 1rem;
+}
+header h1{
+    flex-grow: 1;
+}
+.Fiches img{
+    height: 80px;
+}
+main{
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.filter{
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px gray;
+    margin: 10px;
+    padding: 8px;
+    min-height: 400px;
+    min-width: 300px;
+}
+
+.filter h3 {
+	text-align: center;
+}
+.Fiches{
+    flex: 1;
+	margin: 8px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 4px;
+
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px gray;
+    padding: 8px;
+}
+.Fiches article {
+	border: 1px solid black;
+	padding: 4px;
+}
+.Fiches articles{
+border: solid black 1px;
+padding: 4px;
+}
+
+.Fiches articles img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 200px;
+}
+.Fiches articles p {
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+.Fiches articles h2 {
+	text-align: center;
+}

@@ -1,0 +1,55 @@
+[
+    {
+        "id":"1",
+        "Nom": " Adidas",
+        "Description": "Bien pour jouer et se promener",
+        "Pointure": "42",
+        "Prix": "22 000",
+        "Categorie": "basket",
+        "Images": "Images/basket-2.webp",
+        "Stock": false
+    },
+
+    {
+        "id":"2",
+        "Nom": "Air force",
+        "Description": "Bien pour jouer et se promener",
+        "Pointure": "42",
+        "Prix": "25 000",
+        "Categorie": "basket",
+        "Images": "Images/all-star3.jpg",
+        "Stock": true
+    },
+
+    {
+        "id":"3",
+        "Nom": "Pierre cardin",
+        "Description": "Chaussure a porter pour le travail ou des soiree.",
+        "Pointure": "40",
+        "Prix": "28 000",
+        "Categorie": "Chaussure de ville",
+        "Images": "Images/chaussures-1.png",
+        "Stock": true
+    },
+
+    {
+        "id":"4",
+        "Nom": "Jordan",
+        "Description": "Bien pour jouer et se promener/Bien pour jouer et se promener/Bien pour jouer et se promener/",
+        "Pointure": "45",
+        "Prix": "25 000",
+        "Categorie": "basket",
+        "Images": "Images/all-star3.jpg",
+        "Stock": true
+    },
+    {
+        "id":"5",
+        "Nom": "Jordan bis",
+        "Description": false,
+        "Pointure": "45",
+        "Prix": "12 000",
+        "Categorie": "basket",
+        "Images": "Images/chaussures-1.png",
+        "Stock": true
+    }
+]
