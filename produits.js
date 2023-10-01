@@ -1,9 +1,12 @@
+import { ajoutListenersAvis, ajoutListenerEnvoyerAvis} from "./avis.js";
+
 // Recuperation des produits depuis le fichier json
-const reponse = await fetch("objects-snikers.json");
+const reponse = await fetch('http://localhost:8081/produits/');
 const produits = await reponse.json();
 
-
+ajoutListenerEnvoyerAvis()
 // creation de la bouble qui permettra d'afficher tous les elements
+function genererProduits(produits){
 
 for( let i=0 ; i < produits.length ; i++){
 
@@ -34,6 +37,11 @@ for( let i=0 ; i < produits.length ; i++){
     const stockElement = document.createElement("p")
     stockElement.innerText = articles.Stock ? "En stock" : "Rupture de stock";
     
+     //Bouton avis
+     const avisBouton = document.createElement("button");
+     avisBouton.dataset.id = articles.id;
+     avisBouton.textContent = "Afficher les avis";
+    
     // stoquons nos articles dans un elements parent
 
     // ratachons le format articles a la section fiches
@@ -48,7 +56,14 @@ for( let i=0 ; i < produits.length ; i++){
     formatElement.appendChild(CategorieElement);
     formatElement.appendChild(stockElement);
 
+    formatElement.appendChild(avisBouton);
+
+
+
 }
+            ajoutListenersAvis();
+}
+genererProduits(produits);
 
 //gestion des bouttons 
 
@@ -59,7 +74,8 @@ boutonTrier.addEventListener("click", function (){
     pieceElement.sort(function (a, b){
         return a.Prix - b.Prix
     })
-    console.log(pieceElement)
+    document.querySelector(".Fiches").innerHTML = "";
+    genererProduits(pieceElement);
 })
 
 const boutonFiltrer = document.querySelector(".btn-filtrer");
@@ -68,7 +84,8 @@ boutonFiltrer.addEventListener("click", function () {
     const piecesFiltrees = produits.filter(function (produit) {
         return produit.Prix <= 35;
     });
-   console.log(piecesFiltrees)
+    document.querySelector(".Fiches").innerHTML = "";
+    genererProduits(piecesFiltrees);
 });
 
 //Correction Exercice
@@ -79,7 +96,8 @@ boutonDecroissant.addEventListener("click", function () {
     piecesOrdonnees.sort(function (a, b) {
         return b.Prix - a.Prix;
      });
-     console.log(piecesOrdonnees);
+     document.querySelector(".Fiches").innerHTML = "";
+    genererProduits(piecesOrdonnees);
 });
 
 const boutonNoDescription = document.querySelector(".btn-nodesc");
@@ -88,7 +106,8 @@ boutonNoDescription.addEventListener("click", function () {
     const piecesFiltrees = produits.filter(function (produit) {
         return !produit.Description
     });
-   console.log(piecesFiltrees)
+    document.querySelector(".Fiches").innerHTML = "";
+    genererProduits(piecesFiltrees);
 });
     
 // Extraire les noms de la liste produits
@@ -98,8 +117,9 @@ for(let i = produits.length -1 ; i >= 0; i --){
     if(produits[i].Prix > 20){
         lesNoms.splice(i,1)
     }
-    console.log(lesNoms)
+    
 }
+console.log(lesNoms)
 
 // Affichage des noms 
 // creation de la liste a puce
@@ -135,3 +155,16 @@ document.querySelector('.disponibles').appendChild(disponiblesElement);
 
 
 // document.querySelector('.Fiches').innerHTML = '';
+
+const pElementDisponible = document.createElement('p')
+pElementDisponible.innerText = "Produits disponibles:";
+document.querySelector('.disponibles').appendChild(pElementDisponible).appendChild(disponiblesElement)
+
+const inputPrixMax = document.querySelector('#prix-max')
+inputPrixMax.addEventListener('input', function(){
+    const piecesFiltrees = produits.filter(function(produit){
+        return produit.Prix <= inputPrixMax.value;
+    });
+    document.querySelector(".Fiches").innerHTML = "";
+    genererProduits(piecesFiltrees);  
+})
